@@ -1,0 +1,9 @@
+# Dev files — não publicar
+*.docx
+*.py
+fonts/
+skills-main/
+xquads/
+skills-lock.json
+__pycache__/
+*.pyc
