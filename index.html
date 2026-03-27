@@ -6,523 +6,350 @@
   <title>A Ciência da Defesa — Guia Definitivo das Luvas de Goleiro</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Barlow+Condensed:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --verde:       #00C853;
-      --verde-esc:   #007B31;
-      --verde-glow:  rgba(0,200,83,0.18);
-      --amarelo:     #FFD600;
-      --navy:        #0A192F;
-      --preto:       #07080A;
-      --branco:      #F8FAFB;
-      --cinza:       #8D99AE;
-      --linha:       rgba(255,255,255,0.08);
-      --r:           6px;
+      --bg:       #08080A;
+      --surface:  #0F0F13;
+      --text:     #F0EBE3;
+      --gold:     #F0B429;
+      --gold-dim: rgba(240,180,41,0.12);
+      --red:      #E63946;
+      --red-dim:  rgba(230,57,70,0.08);
+      --linha:    rgba(240,235,227,0.07);
+      --muted:    rgba(240,235,227,0.45);
     }
 
     html { scroll-behavior: smooth; }
 
     body {
-      background: var(--preto);
-      color: var(--branco);
-      font-family: 'Barlow', sans-serif;
-      font-size: 17px;
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 16px;
       line-height: 1.65;
       overflow-x: hidden;
     }
 
-    /* ── UTILIDADES ─────────────────────────────────────── */
-    .container { max-width: 860px; margin: 0 auto; padding: 0 24px; }
-    .container--wide { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
-    .verde { color: var(--verde); }
-    .amarelo { color: var(--amarelo); }
-    .negrito { font-weight: 700; }
-    .bebas { font-family: 'Bebas Neue', sans-serif; letter-spacing: 0.03em; }
-    .condensed { font-family: 'Barlow Condensed', sans-serif; }
+    /* ── UTILITIES ──────────────────────────────────────── */
+    .container      { max-width: 860px;  margin: 0 auto; padding: 0 24px; }
+    .container--wide{ max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+    .gold  { color: var(--gold); }
+    .red   { color: var(--red);  }
+    .arch  { font-family: 'Archivo Black', sans-serif; }
 
     /* ── NAV ─────────────────────────────────────────────── */
     nav {
       position: sticky; top: 0; z-index: 100;
-      background: rgba(7,8,10,0.92);
-      backdrop-filter: blur(12px);
+      background: rgba(8,8,10,0.94);
+      backdrop-filter: blur(14px);
       border-bottom: 1px solid var(--linha);
-      padding: 14px 24px;
-      display: flex; align-items: center; justify-content: space-between;
+      padding: 16px 24px;
+      display: flex; align-items: center;
     }
     .nav-logo {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 22px; letter-spacing: 0.08em;
-      color: var(--branco);
+      font-family: 'Archivo Black', sans-serif;
+      font-size: 18px; letter-spacing: 0.04em;
+      color: var(--text);
     }
-    .nav-logo span { color: var(--verde); }
-    .nav-cta {
-      background: var(--verde);
-      color: #000; font-weight: 700;
-      padding: 9px 22px; border-radius: var(--r);
-      text-decoration: none; font-size: 14px;
-      transition: filter .2s;
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 15px; letter-spacing: 0.04em;
-    }
-    .nav-cta:hover { filter: brightness(1.12); }
+    .nav-logo span { color: var(--gold); }
 
-    /* ── HERO ────────────────────────────────────────────── */
+    /* ── HERO ─────────────────────────────────────────────── */
     .hero {
       position: relative;
-      min-height: 94vh;
+      min-height: 96vh;
       display: flex; align-items: center;
       overflow: hidden;
-      padding: 80px 0 60px;
+      padding: 100px 0 72px;
     }
     .hero-bg {
       position: absolute; inset: 0;
       background:
-        radial-gradient(ellipse 70% 60% at 80% 50%, rgba(0,200,83,0.07) 0%, transparent 70%),
-        radial-gradient(ellipse 50% 80% at 10% 80%, rgba(10,25,47,0.9) 0%, transparent 70%),
-        linear-gradient(160deg, #07080A 0%, #0a1929 60%, #07080A 100%);
+        radial-gradient(ellipse 55% 65% at 82% 48%, rgba(240,180,41,0.055) 0%, transparent 68%),
+        radial-gradient(ellipse 45% 70% at 15% 75%, rgba(8,8,10,0.95) 0%, transparent 70%),
+        linear-gradient(155deg, #08080A 0%, #0c0c0f 55%, #08080A 100%);
     }
-    /* Grade pontilhada */
+    /* Dot grid */
     .hero-bg::after {
       content: '';
       position: absolute; inset: 0;
-      background-image: radial-gradient(circle, rgba(255,255,255,0.06) 1px, transparent 1px);
-      background-size: 32px 32px;
-    }
-    /* Linha diagonal decorativa */
-    .hero-diagonal {
-      position: absolute;
-      top: -10%; right: -5%;
-      width: 55%; height: 130%;
-      background: linear-gradient(160deg, transparent 40%, rgba(0,200,83,0.04) 100%);
-      transform: skewX(-8deg);
-      pointer-events: none;
+      background-image: radial-gradient(circle, rgba(240,235,227,0.055) 1px, transparent 1px);
+      background-size: 28px 28px;
     }
     .hero-content {
       position: relative; z-index: 2;
       display: grid;
       grid-template-columns: 1fr auto;
-      gap: 60px;
+      gap: 72px;
       align-items: center;
       width: 100%;
     }
-    .hero-tag {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: rgba(0,200,83,0.1);
-      border: 1px solid rgba(0,200,83,0.3);
-      color: var(--verde);
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 13px; font-weight: 700; letter-spacing: 0.1em;
-      padding: 6px 14px; border-radius: 100px;
-      margin-bottom: 24px;
-      animation: fadeDown .7s ease both;
-    }
-    .hero-tag::before { content: '●'; font-size: 8px; animation: pulse 2s infinite; }
-    @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
-
     .hero-eyebrow {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 15px; font-weight: 600; letter-spacing: 0.15em;
-      color: var(--cinza); text-transform: uppercase;
-      margin-bottom: 12px;
-      animation: fadeDown .7s .1s ease both;
+      font-size: 11px; font-weight: 700; letter-spacing: 0.22em;
+      color: var(--muted); text-transform: uppercase;
+      margin-bottom: 20px;
+      animation: fadeDown .7s .08s ease both;
     }
     .hero-headline {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(48px, 7vw, 82px);
-      line-height: 0.95;
-      letter-spacing: 0.02em;
-      margin-bottom: 24px;
-      animation: fadeDown .7s .15s ease both;
+      font-family: 'Archivo Black', sans-serif;
+      font-size: clamp(52px, 7.2vw, 92px);
+      line-height: 0.92;
+      letter-spacing: -0.01em;
+      margin-bottom: 28px;
+      animation: fadeDown .7s .16s ease both;
     }
-    .hero-headline .line-verde { color: var(--verde); display: block; }
-    .hero-headline .line-amarelo { color: var(--amarelo); display: block; font-size: 80%; }
-
+    .hero-headline .line-solid { display: block; }
+    .hero-headline .line-gold  { display: block; color: var(--gold); }
+    .hero-headline .line-outline {
+      display: block;
+      -webkit-text-stroke: 1.5px var(--text);
+      color: transparent;
+    }
     .hero-sub {
-      font-size: 18px; line-height: 1.7;
-      color: rgba(248,250,251,0.78);
-      max-width: 520px;
-      margin-bottom: 36px;
-      animation: fadeDown .7s .22s ease both;
+      font-size: 17px; line-height: 1.72;
+      color: rgba(240,235,227,0.72);
+      max-width: 500px;
+      margin-bottom: 52px;
+      animation: fadeDown .7s .24s ease both;
     }
-    .hero-sub strong { color: var(--branco); font-weight: 600; }
+    .hero-sub strong { color: var(--text); font-weight: 700; }
 
-    .hero-cta-group {
-      display: flex; flex-direction: column; gap: 12px;
-      animation: fadeDown .7s .3s ease both;
+    /* Stats row */
+    .hero-stats {
+      display: grid;
+      grid-template-columns: 1fr 1px 1fr 1px 1fr;
+      gap: 0;
+      padding-top: 32px;
+      border-top: 1px solid var(--linha);
+      animation: fadeDown .7s .34s ease both;
     }
-    .btn-primary {
-      display: inline-flex; align-items: center; justify-content: center; gap: 10px;
-      background: var(--verde);
-      color: #000; font-weight: 800;
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 20px; letter-spacing: 0.04em;
-      padding: 18px 40px; border-radius: var(--r);
-      text-decoration: none;
-      transition: transform .2s, filter .2s, box-shadow .2s;
-      box-shadow: 0 0 40px rgba(0,200,83,0.3);
-      width: fit-content;
+    .stat-divider {
+      background: var(--linha);
+      align-self: stretch;
     }
-    .btn-primary:hover {
-      transform: translateY(-2px);
-      filter: brightness(1.1);
-      box-shadow: 0 8px 50px rgba(0,200,83,0.45);
+    .stat-item { padding: 0 28px; }
+    .stat-item:first-child { padding-left: 0; }
+    .stat-num {
+      font-family: 'Archivo Black', sans-serif;
+      font-size: 28px; line-height: 1;
+      color: var(--gold);
+      margin-bottom: 4px;
     }
-    .btn-primary .arrow { font-size: 22px; }
-    .hero-guarantee {
-      font-size: 13px; color: var(--cinza);
-      display: flex; align-items: center; gap: 7px;
-    }
-    .hero-guarantee::before { content: '🔒'; font-size: 14px; }
+    .stat-label { font-size: 12px; color: var(--muted); line-height: 1.4; }
 
-    /* Hero Gloves Image */
-    .book-mockup {
+    /* Hero photo frame */
+    .hero-photo-wrap {
       position: relative;
       animation: fadeLeft .8s .2s ease both;
       flex-shrink: 0;
     }
-    .hero-gloves-wrap {
+    .hero-photo-frame {
       position: relative;
-      display: inline-block;
-    }
-    .hero-gloves-img {
       width: 300px;
-      border-radius: 12px;
-      overflow: hidden;
-      animation: floatBook 4s ease-in-out infinite;
-      box-shadow:
-        -14px 16px 48px rgba(0,0,0,0.85),
-        0 0 0 1px rgba(0,200,83,0.15),
-        0 0 60px rgba(0,200,83,0.1);
     }
-    .hero-gloves-img img {
+    .hero-photo-frame img {
       width: 100%;
       display: block;
-      filter: saturate(0.9) contrast(1.05) brightness(0.92);
+      filter: saturate(0.85) contrast(1.08) brightness(0.88);
     }
-    .hero-gloves-img::after {
+    /* Crosshair corners — top-left */
+    .hero-photo-frame::before {
       content: '';
-      position: absolute; inset: 0;
-      background: linear-gradient(
-        to top,
-        rgba(0,10,5,0.55) 0%,
-        transparent 50%
-      );
+      position: absolute; top: -8px; left: -8px;
+      width: 28px; height: 28px;
+      border-top: 2px solid var(--gold);
+      border-left: 2px solid var(--gold);
+      pointer-events: none; z-index: 3;
     }
-    .hero-gloves-caption {
-      position: absolute;
-      bottom: 0; left: 0; right: 0;
-      padding: 18px 16px 14px;
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 12px; font-weight: 700; letter-spacing: 0.12em;
-      color: rgba(248,250,251,0.7);
-      text-transform: uppercase;
-      text-align: center;
-      z-index: 2;
-    }
-
-    /* Book 3D Mockup (kept for solution section) */
-    .book-3d {
-      width: 220px;
-      position: relative;
-      transform-style: preserve-3d;
-      animation: floatBook 4s ease-in-out infinite;
-    }
-    @keyframes floatBook {
-      0%,100% { transform: rotateY(-8deg) rotateX(3deg) translateY(0); }
-      50%      { transform: rotateY(-8deg) rotateX(3deg) translateY(-12px); }
-    }
-    .book-cover {
-      width: 100%;
-      aspect-ratio: 2/3;
-      background: linear-gradient(145deg, #0A192F 0%, #07080A 100%);
-      border-radius: 4px 10px 10px 4px;
-      border: 1px solid rgba(0,200,83,0.2);
-      display: flex; flex-direction: column;
-      padding: 28px 22px;
-      position: relative;
-      box-shadow:
-        -12px 12px 30px rgba(0,0,0,0.7),
-        -6px 6px 0 rgba(0,200,83,0.05),
-        inset -3px 0 6px rgba(0,0,0,0.3);
-      overflow: hidden;
-    }
-    .book-cover::before {
+    /* Crosshair corners — bottom-right */
+    .hero-photo-frame::after {
       content: '';
-      position: absolute; top: 0; left: 0; right: 0;
-      height: 4px;
-      background: linear-gradient(90deg, var(--verde), var(--amarelo));
+      position: absolute; bottom: -8px; right: -8px;
+      width: 28px; height: 28px;
+      border-bottom: 2px solid var(--gold);
+      border-right: 2px solid var(--gold);
+      pointer-events: none; z-index: 3;
     }
-    .book-cover::after {
+    /* Extra crosshair corners via pseudo on inner div */
+    .hero-photo-corners::before {
       content: '';
-      position: absolute; inset: 0;
-      background: repeating-linear-gradient(
-        -45deg,
-        transparent, transparent 40px,
-        rgba(0,200,83,0.015) 40px, rgba(0,200,83,0.015) 41px
-      );
+      position: absolute; top: -8px; right: -8px;
+      width: 28px; height: 28px;
+      border-top: 2px solid var(--gold);
+      border-right: 2px solid var(--gold);
+      pointer-events: none; z-index: 3;
     }
-    .book-tag {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 10px; font-weight: 700; letter-spacing: 0.15em;
-      color: var(--verde); text-transform: uppercase;
-      margin-bottom: auto;
+    .hero-photo-corners::after {
+      content: '';
+      position: absolute; bottom: -8px; left: -8px;
+      width: 28px; height: 28px;
+      border-bottom: 2px solid var(--gold);
+      border-left: 2px solid var(--gold);
+      pointer-events: none; z-index: 3;
     }
-    .book-num {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 90px; line-height: 0.8;
-      color: rgba(0,200,83,0.06);
-      position: absolute; bottom: 20px; right: -8px;
+    .hero-photo-corners {
+      position: absolute; inset: 0; pointer-events: none;
     }
-    .book-title-cover {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 28px; line-height: 1;
-      letter-spacing: 0.03em;
-      color: var(--branco);
-      margin-bottom: 4px;
-      position: relative; z-index: 1;
+    .hero-photo-caption {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      padding: 14px 12px 10px;
+      background: linear-gradient(to top, rgba(8,8,10,0.88) 0%, transparent 100%);
+      font-size: 10px; font-weight: 700; letter-spacing: 0.14em;
+      color: rgba(240,235,227,0.55); text-transform: uppercase;
+      text-align: center; z-index: 2;
     }
-    .book-title-cover span { color: var(--verde); display: block; }
-    .book-sub-cover {
-      font-size: 9px; font-weight: 600; letter-spacing: 0.08em;
-      color: var(--cinza); text-transform: uppercase;
-      position: relative; z-index: 1;
+    .hero-photo-label {
+      margin-top: 14px;
+      font-size: 10px; font-weight: 700; letter-spacing: 0.2em;
+      color: var(--muted); text-transform: uppercase; text-align: center;
     }
-    .book-spine {
-      position: absolute;
-      left: -18px; top: 0;
-      width: 18px; height: 100%;
-      background: linear-gradient(180deg, #007B31 0%, #004d1f 100%);
-      border-radius: 4px 0 0 4px;
-      display: flex; align-items: center; justify-content: center;
-    }
-    .book-spine-text {
-      writing-mode: vertical-rl;
-      transform: rotate(180deg);
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 9px; letter-spacing: 0.1em;
-      color: rgba(255,255,255,0.6);
-    }
-    .book-glow {
-      position: absolute;
-      bottom: -30px; left: 50%; transform: translateX(-50%);
-      width: 150px; height: 30px;
-      background: rgba(0,200,83,0.2);
-      filter: blur(20px);
-      border-radius: 50%;
-    }
-    .book-badge {
-      position: absolute;
-      top: -14px; right: -14px;
-      width: 72px; height: 72px;
-      background: var(--amarelo);
-      border-radius: 50%;
-      display: flex; flex-direction: column;
-      align-items: center; justify-content: center;
-      box-shadow: 0 4px 20px rgba(255,214,0,0.4);
-      animation: rotateBadge 12s linear infinite;
-    }
-    @keyframes rotateBadge { to { transform: rotate(360deg); } }
-    .book-badge-inner {
-      animation: rotateBadge 12s linear infinite reverse;
-      display: flex; flex-direction: column; align-items: center;
-    }
-    .book-badge .price { font-family: 'Bebas Neue', sans-serif; font-size: 20px; color: #000; line-height: 1; }
-    .book-badge .price-label { font-size: 9px; font-weight: 800; color: #000; letter-spacing: 0.05em; }
-
-    /* Hero stats */
-    .hero-stats {
-      display: flex; gap: 32px;
-      margin-top: 40px;
-      padding-top: 32px;
-      border-top: 1px solid var(--linha);
-      animation: fadeDown .7s .4s ease both;
-    }
-    .stat-item { text-align: left; }
-    .stat-num {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 32px; line-height: 1;
-      color: var(--verde);
-    }
-    .stat-label { font-size: 12px; color: var(--cinza); letter-spacing: 0.05em; }
 
     @keyframes fadeDown {
-      from { opacity:0; transform: translateY(-16px); }
+      from { opacity:0; transform: translateY(-18px); }
       to   { opacity:1; transform: translateY(0); }
     }
     @keyframes fadeLeft {
-      from { opacity:0; transform: translateX(24px); }
+      from { opacity:0; transform: translateX(28px); }
       to   { opacity:1; transform: translateX(0); }
     }
+    @keyframes fadeUp {
+      from { opacity:0; transform: translateY(20px); }
+      to   { opacity:1; transform: translateY(0); }
+    }
 
-    /* ── STRIP ────────────────────────────────────────────── */
+    /* ── STRIP ─────────────────────────────────────────────── */
     .strip {
-      background: var(--verde);
-      padding: 14px 0;
+      background: var(--gold);
+      padding: 13px 0;
       overflow: hidden;
     }
     .strip-inner {
-      display: flex; gap: 48px;
-      animation: scrollStrip 18s linear infinite;
+      display: flex; gap: 0;
+      animation: scrollStrip 22s linear infinite;
       white-space: nowrap;
     }
     @keyframes scrollStrip { to { transform: translateX(-50%); } }
     .strip-item {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 15px; letter-spacing: 0.1em;
+      font-family: 'Archivo Black', sans-serif;
+      font-size: 13px; letter-spacing: 0.1em;
       color: #000; flex-shrink: 0;
+      padding: 0 24px;
     }
-    .strip-sep { color: rgba(0,0,0,0.3); }
+    .strip-sep { color: rgba(0,0,0,0.35); flex-shrink: 0; line-height: 1; font-size: 10px; }
 
-    /* ── SECTIONS GENÉRICO ────────────────────────────────── */
-    section { padding: 100px 0; }
+    /* ── SECTIONS GENÉRICO ──────────────────────────────────── */
+    section { padding: 104px 0; }
     .section-tag {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 12px; font-weight: 700; letter-spacing: 0.18em;
-      color: var(--verde); text-transform: uppercase;
-      margin-bottom: 12px;
+      font-size: 10px; font-weight: 700; letter-spacing: 0.24em;
+      color: var(--gold); text-transform: uppercase;
+      margin-bottom: 14px;
     }
     .section-headline {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(36px, 5vw, 58px);
-      line-height: 1;
-      letter-spacing: 0.02em;
-      margin-bottom: 16px;
+      font-family: 'Archivo Black', sans-serif;
+      font-size: clamp(34px, 4.8vw, 54px);
+      line-height: 1.0;
+      letter-spacing: -0.01em;
+      margin-bottom: 18px;
     }
     .section-sub {
-      font-size: 17px; color: rgba(248,250,251,0.7);
-      max-width: 560px; line-height: 1.7;
+      font-size: 16px; color: rgba(240,235,227,0.65);
+      max-width: 540px; line-height: 1.72;
       margin-bottom: 56px;
     }
 
-    /* ── DOR ─────────────────────────────────────────────── */
-    .dor { background: #0A0D12; }
+    /* ── DOR ────────────────────────────────────────────────── */
+    .dor { background: var(--surface); }
     .dor-intro {
       font-size: 19px; font-style: italic;
-      color: rgba(248,250,251,0.75);
-      border-left: 3px solid var(--verde);
+      color: rgba(240,235,227,0.72);
+      border-left: 3px solid var(--red);
       padding-left: 24px;
-      margin-bottom: 56px;
-      line-height: 1.75;
+      margin-bottom: 48px;
+      line-height: 1.78;
     }
-    .pain-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 2px;
-    }
-    .pain-card {
-      background: rgba(255,255,255,0.025);
-      border: 1px solid rgba(255,255,255,0.06);
-      padding: 32px 28px;
-      transition: border-color .3s, background .3s;
-      position: relative;
-      overflow: hidden;
-    }
-    .pain-card::before {
-      content: '';
-      position: absolute; top: 0; left: 0; right: 0;
-      height: 2px;
-      background: linear-gradient(90deg, var(--verde), transparent);
-      opacity: 0;
-      transition: opacity .3s;
-    }
-    .pain-card:hover { background: rgba(255,255,255,0.04); border-color: rgba(0,200,83,0.2); }
-    .pain-card:hover::before { opacity: 1; }
-    .pain-icon { font-size: 32px; margin-bottom: 16px; }
-    .pain-title {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 19px; font-weight: 700;
-      color: var(--branco); margin-bottom: 10px;
-      letter-spacing: 0.02em;
-    }
-    .pain-text { font-size: 15px; color: var(--cinza); line-height: 1.65; }
+    .dor-intro strong { color: var(--text); font-style: normal; }
 
-    /* Pain shock image */
+    /* Pain image */
     .pain-shock {
-      margin: 40px 0 56px;
+      margin: 0 0 48px;
       position: relative;
-      border-radius: 10px;
       overflow: hidden;
-      max-height: 280px;
+      max-height: 270px;
     }
     .pain-shock img {
       width: 100%;
-      height: 280px;
+      height: 270px;
       object-fit: cover;
-      object-position: center 40%;
-      filter: saturate(0.5) contrast(1.1) brightness(0.65);
+      object-position: center 38%;
+      filter: saturate(0.4) contrast(1.15) brightness(0.6);
       display: block;
     }
     .pain-shock-overlay {
       position: absolute; inset: 0;
-      background: linear-gradient(
-        90deg,
-        rgba(7,8,10,0.85) 0%,
-        rgba(7,8,10,0.4) 50%,
-        rgba(7,8,10,0.7) 100%
-      );
+      background: linear-gradient(90deg, rgba(8,8,10,0.9) 0%, rgba(8,8,10,0.4) 50%, rgba(8,8,10,0.72) 100%);
       display: flex; align-items: center;
       padding: 0 48px;
     }
     .pain-shock-text {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(28px, 4vw, 48px);
-      line-height: 1;
-      color: #FF5252;
-      max-width: 480px;
+      font-family: 'Archivo Black', sans-serif;
+      font-size: clamp(26px, 3.8vw, 46px);
+      line-height: 1.0;
+      color: var(--red);
+      max-width: 440px;
     }
-    .pain-shock-text span { color: var(--branco); font-size: 60%; display: block; margin-top: 8px; font-family: 'Barlow Condensed', sans-serif; font-weight: 600; letter-spacing: 0.04em; }
+    .pain-shock-text span {
+      color: var(--text);
+      font-size: 50%;
+      display: block; margin-top: 10px;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 600; letter-spacing: 0.02em;
+    }
 
-    /* ── AGITAÇÃO ─────────────────────────────────────────── */
+    /* Pain cards */
+    .pain-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1px;
+      background: var(--linha);
+    }
+    .pain-card {
+      background: var(--surface);
+      padding: 32px 28px;
+      transition: background .25s, border-left .25s;
+      position: relative;
+      border-left: 3px solid transparent;
+    }
+    .pain-card:hover {
+      background: rgba(230,57,70,0.05);
+      border-left: 3px solid var(--red);
+    }
+    .pain-num {
+      font-family: 'Archivo Black', sans-serif;
+      font-size: 11px; letter-spacing: 0.2em;
+      color: var(--muted); margin-bottom: 16px;
+    }
+    .pain-title {
+      font-family: 'Archivo Black', sans-serif;
+      font-size: 17px; letter-spacing: -0.01em;
+      color: var(--text); margin-bottom: 10px;
+    }
+    .pain-text { font-size: 14px; color: var(--muted); line-height: 1.68; }
+
+    /* ── AGITAÇÃO ───────────────────────────────────────────── */
     .agit {
-      background: linear-gradient(160deg, #0e0200 0%, #0A0D12 100%);
-      border-top: 1px solid rgba(200,0,0,0.15);
-      border-bottom: 1px solid rgba(200,0,0,0.15);
+      background: var(--bg);
+      border-top: 1px solid rgba(230,57,70,0.18);
+      border-bottom: 1px solid rgba(230,57,70,0.18);
     }
     .agit-headline {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(38px, 5vw, 64px);
-      line-height: 1;
-      margin-bottom: 32px;
-      color: #FF5252;
-    }
-    .agit-calc {
-      display: flex; flex-direction: column; gap: 16px;
-      max-width: 560px;
-    }
-    .calc-row {
-      display: flex; justify-content: space-between; align-items: center;
-      padding: 16px 20px;
-      background: rgba(255,255,255,0.03);
-      border: 1px solid rgba(255,255,255,0.06);
-      border-radius: var(--r);
-    }
-    .calc-label { font-size: 15px; color: rgba(248,250,251,0.75); }
-    .calc-value { font-family: 'Bebas Neue', sans-serif; font-size: 22px; color: #FF5252; }
-    .calc-total {
-      display: flex; justify-content: space-between; align-items: center;
-      padding: 20px 24px;
-      background: rgba(255,82,82,0.08);
-      border: 1px solid rgba(255,82,82,0.25);
-      border-radius: var(--r);
-    }
-    .calc-total-label {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 16px; font-weight: 700;
-      text-transform: uppercase; letter-spacing: 0.08em;
-      color: #FF5252;
-    }
-    .calc-total-value {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 34px; color: #FF5252;
-    }
-    .agit-close {
-      margin-top: 36px;
-      font-size: 17px; font-style: italic;
-      color: rgba(248,250,251,0.65);
-      max-width: 560px;
+      font-family: 'Archivo Black', sans-serif;
+      font-size: clamp(36px, 5vw, 62px);
+      line-height: 1.0;
+      margin-bottom: 36px;
+      color: var(--red);
+      letter-spacing: -0.01em;
     }
     .agit-layout {
       display: grid;
@@ -530,324 +357,354 @@
       gap: 56px;
       align-items: start;
     }
+    .agit-calc { display: flex; flex-direction: column; gap: 1px; max-width: 560px; background: var(--linha); }
+    .calc-row {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 16px 20px;
+      background: var(--surface);
+    }
+    .calc-label { font-size: 14px; color: rgba(240,235,227,0.7); }
+    .calc-value {
+      font-family: 'Archivo Black', sans-serif;
+      font-size: 18px; color: var(--red);
+      flex-shrink: 0; margin-left: 16px;
+    }
+    .calc-total {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 20px 20px;
+      background: rgba(230,57,70,0.06);
+      border-top: 1px solid rgba(230,57,70,0.2);
+    }
+    .calc-total-label {
+      font-size: 11px; font-weight: 700; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--red);
+    }
+    .calc-total-value {
+      font-family: 'Archivo Black', sans-serif;
+      font-size: 30px; color: var(--red);
+    }
+    .agit-close {
+      margin-top: 32px;
+      font-size: 16px; font-style: italic;
+      color: rgba(240,235,227,0.58);
+      max-width: 560px;
+    }
     .agit-photo {
-      width: 260px;
-      border-radius: 10px;
+      width: 248px;
       overflow: hidden;
       flex-shrink: 0;
       position: relative;
-      box-shadow: -8px 8px 32px rgba(0,0,0,0.7), 0 0 0 1px rgba(255,82,82,0.1);
       align-self: center;
+      border: 1px solid rgba(230,57,70,0.15);
     }
     .agit-photo img {
       width: 100%;
       display: block;
-      filter: saturate(0.6) contrast(1.15) brightness(0.75);
+      filter: saturate(0.5) contrast(1.18) brightness(0.72);
     }
     .agit-photo-label {
       position: absolute; bottom: 0; left: 0; right: 0;
-      padding: 10px 14px;
-      background: linear-gradient(to top, rgba(7,8,10,0.95), transparent);
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 11px; font-weight: 700; letter-spacing: 0.1em;
-      color: #FF5252; text-transform: uppercase;
-      text-align: center;
-    }
-    @media (max-width: 768px) {
-      .agit-layout { grid-template-columns: 1fr; }
-      .agit-photo { width: 100%; }
-      .pain-shock-overlay { padding: 0 24px; }
+      padding: 10px 12px;
+      background: linear-gradient(to top, rgba(8,8,10,0.95), transparent);
+      font-size: 10px; font-weight: 700; letter-spacing: 0.14em;
+      color: var(--red); text-transform: uppercase; text-align: center;
     }
 
     /* ── SOLUÇÃO ──────────────────────────────────────────── */
-    .solucao { background: var(--preto); }
-    .solucao-reveal {
-      display: flex; gap: 72px; align-items: center;
-    }
+    .solucao { background: var(--bg); }
+    .solucao-reveal { display: flex; gap: 72px; align-items: center; }
     .solucao-text { flex: 1; }
     .solucao-book { flex-shrink: 0; }
     .solucao-headline {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(40px, 5.5vw, 70px);
-      line-height: 0.95;
-      margin-bottom: 24px;
+      font-family: 'Archivo Black', sans-serif;
+      font-size: clamp(36px, 5vw, 64px);
+      line-height: 0.96;
+      letter-spacing: -0.01em;
+      margin-bottom: 28px;
     }
-    .solucao-headline em { color: var(--verde); font-style: normal; display: block; }
+    .solucao-headline em { color: var(--gold); font-style: normal; display: block; }
     .solucao-p {
-      font-size: 17px; color: rgba(248,250,251,0.78);
-      line-height: 1.75; margin-bottom: 18px;
+      font-size: 16px; color: rgba(240,235,227,0.72);
+      line-height: 1.75; margin-bottom: 16px;
     }
-    .solucao-p strong { color: var(--branco); }
+    .solucao-p strong { color: var(--text); }
 
-    /* ── CAPÍTULOS ─────────────────────────────────────────── */
-    .caps { background: #070B10; }
+    /* Mini book card */
+    .book-card {
+      width: 190px;
+      background: var(--surface);
+      border: 1px solid rgba(240,180,41,0.22);
+      border-top: 2px solid var(--gold);
+      padding: 24px 20px 20px;
+      position: relative;
+      overflow: hidden;
+    }
+    .book-card-bg-num {
+      font-family: 'Archivo Black', sans-serif;
+      font-size: 110px; line-height: 0.85;
+      color: rgba(240,180,41,0.03);
+      position: absolute; bottom: -8px; right: -8px;
+      pointer-events: none;
+    }
+    .book-card-tag {
+      font-size: 10px; font-weight: 700; letter-spacing: 0.18em;
+      color: var(--gold); text-transform: uppercase;
+      margin-bottom: 18px; display: block;
+    }
+    .book-card-title {
+      font-family: 'Archivo Black', sans-serif;
+      font-size: 20px; line-height: 1.0;
+      letter-spacing: -0.01em; color: var(--text);
+      margin-bottom: 4px; position: relative; z-index: 1;
+    }
+    .book-card-title span { color: var(--gold); display: block; }
+    .book-card-sub {
+      font-size: 10px; font-weight: 600; letter-spacing: 0.06em;
+      color: var(--muted); text-transform: uppercase;
+      position: relative; z-index: 1; margin-top: 8px;
+    }
+    .book-card-footer {
+      margin-top: 20px;
+      font-size: 10px; font-weight: 700; letter-spacing: 0.12em;
+      color: var(--muted); text-transform: uppercase;
+      border-top: 1px solid var(--linha);
+      padding-top: 14px;
+    }
+
+    /* ── CAPÍTULOS ────────────────────────────────────────── */
+    .caps { background: var(--surface); }
     .caps-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 2px;
+      gap: 1px;
+      background: var(--linha);
     }
     .cap-card {
       padding: 32px 28px;
-      background: rgba(255,255,255,0.02);
-      border: 1px solid rgba(255,255,255,0.05);
+      background: var(--surface);
       position: relative;
       overflow: hidden;
-      transition: background .3s;
+      transition: background .25s, border-top .25s;
+      border-top: 2px solid transparent;
     }
-    .cap-card:hover { background: rgba(0,200,83,0.04); border-color: rgba(0,200,83,0.15); }
-    .cap-num {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 64px; line-height: 1;
-      color: rgba(0,200,83,0.08);
-      position: absolute; top: 16px; right: 16px;
+    .cap-card:hover {
+      background: rgba(240,180,41,0.035);
+      border-top: 2px solid var(--gold);
+    }
+    .cap-num-bg {
+      font-family: 'Archivo Black', sans-serif;
+      font-size: 80px; line-height: 0.85;
+      color: rgba(240,180,41,0.03);
+      position: absolute; bottom: 10px; right: 12px;
+      pointer-events: none; user-select: none;
     }
     .cap-badge {
-      display: inline-flex;
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 11px; font-weight: 700; letter-spacing: 0.1em;
-      color: var(--verde);
-      background: rgba(0,200,83,0.1);
-      border: 1px solid rgba(0,200,83,0.2);
-      padding: 3px 10px; border-radius: 100px;
-      margin-bottom: 16px;
+      display: inline-block;
+      font-size: 10px; font-weight: 700; letter-spacing: 0.16em;
+      color: var(--gold);
+      background: var(--gold-dim);
+      padding: 3px 10px;
+      margin-bottom: 14px;
+      text-transform: uppercase;
     }
     .cap-title {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 20px; font-weight: 700;
-      color: var(--branco); margin-bottom: 10px;
+      font-family: 'Archivo Black', sans-serif;
+      font-size: 17px; letter-spacing: -0.01em;
+      color: var(--text); margin-bottom: 10px;
+      position: relative; z-index: 1;
     }
-    .cap-text { font-size: 14px; color: var(--cinza); line-height: 1.65; }
+    .cap-text { font-size: 13.5px; color: var(--muted); line-height: 1.65; }
     .cap-bullets {
       margin-top: 14px; list-style: none;
       display: flex; flex-direction: column; gap: 6px;
     }
     .cap-bullets li {
-      font-size: 13.5px; color: rgba(248,250,251,0.65);
+      font-size: 13px; color: rgba(240,235,227,0.6);
       display: flex; align-items: flex-start; gap: 8px;
     }
-    .cap-bullets li::before { content: '—'; color: var(--verde); flex-shrink: 0; }
+    .cap-bullets li::before {
+      content: '→'; color: var(--gold);
+      flex-shrink: 0; font-weight: 700;
+    }
 
-    /* ── VALUE STACK ──────────────────────────────────────── */
-    .stack {
-      background: linear-gradient(160deg, #050D1A 0%, #07080A 100%);
-      position: relative;
+    /* ── VALUE STACK ─────────────────────────────────────── */
+    .stack { background: var(--bg); }
+    .stack-items {
+      display: flex; flex-direction: column;
+      border-top: 1px solid var(--linha);
+      margin-bottom: 0;
     }
-    .stack::before {
-      content: '';
-      position: absolute; top: 0; left: 0; right: 0; height: 1px;
-      background: linear-gradient(90deg, transparent, var(--verde), transparent);
-    }
-    .stack-items { display: flex; flex-direction: column; gap: 12px; margin-bottom: 40px; }
     .stack-item {
       display: flex; align-items: center; gap: 20px;
-      padding: 20px 24px;
-      background: rgba(255,255,255,0.03);
-      border: 1px solid rgba(255,255,255,0.06);
-      border-radius: var(--r);
-      transition: border-color .3s;
+      padding: 20px 0;
+      border-bottom: 1px solid var(--linha);
+      transition: background .2s;
     }
-    .stack-item:hover { border-color: rgba(0,200,83,0.2); }
-    .stack-item-icon { font-size: 28px; flex-shrink: 0; }
+    .stack-item:hover { background: var(--gold-dim); margin: 0 -16px; padding-left: 16px; padding-right: 16px; }
+    .stack-item-icon {
+      font-size: 10px; font-weight: 700; letter-spacing: 0.16em;
+      color: var(--gold); text-transform: uppercase;
+      flex-shrink: 0; width: 28px; text-align: center;
+    }
     .stack-item-text { flex: 1; }
     .stack-item-name {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 17px; font-weight: 700;
-      color: var(--branco); margin-bottom: 3px;
+      font-family: 'Archivo Black', sans-serif;
+      font-size: 15px; letter-spacing: -0.01em;
+      color: var(--text); margin-bottom: 3px;
     }
-    .stack-item-desc { font-size: 14px; color: var(--cinza); }
+    .stack-item-desc { font-size: 13px; color: var(--muted); }
     .stack-item-price {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 22px; color: var(--cinza);
-      text-decoration: line-through;
-      flex-shrink: 0;
+      font-family: 'Archivo Black', sans-serif;
+      font-size: 16px; color: var(--muted);
+      text-decoration: line-through; flex-shrink: 0;
     }
     .stack-total {
       display: flex; justify-content: space-between; align-items: center;
-      padding: 24px 28px;
-      background: rgba(0,200,83,0.06);
-      border: 1px solid rgba(0,200,83,0.2);
-      border-radius: var(--r);
+      padding: 24px 0;
+      border-bottom: 1px solid var(--gold);
+      margin-top: 0;
     }
     .stack-total-label {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 14px; font-weight: 700; letter-spacing: 0.1em;
-      color: var(--cinza); text-transform: uppercase;
+      font-size: 11px; font-weight: 700; letter-spacing: 0.14em;
+      color: var(--muted); text-transform: uppercase;
     }
     .stack-total-value {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 38px; color: var(--verde);
+      font-family: 'Archivo Black', sans-serif;
+      font-size: 32px; color: var(--gold);
     }
 
-    /* ── DEPOIMENTOS ──────────────────────────────────────── */
-    .depo { background: #0A0D12; }
+    /* ── DEPOIMENTOS ─────────────────────────────────────── */
+    .depo { background: var(--surface); }
     .depo-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 20px;
+      gap: 1px;
+      background: var(--linha);
     }
     .depo-card {
-      background: rgba(255,255,255,0.03);
-      border: 1px solid rgba(255,255,255,0.07);
-      border-radius: var(--r);
-      padding: 28px 24px;
+      background: var(--surface);
+      padding: 30px 26px;
       position: relative;
+      overflow: hidden;
     }
-    .depo-card::before {
-      content: '\201C';
-      position: absolute; top: 16px; right: 20px;
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 72px; line-height: 1;
-      color: rgba(0,200,83,0.12);
+    .depo-quote-bg {
+      position: absolute; top: 10px; right: 16px;
+      font-family: 'Archivo Black', sans-serif;
+      font-size: 96px; line-height: 1;
+      color: rgba(240,180,41,0.07);
+      pointer-events: none; user-select: none;
     }
-    .depo-stars { color: var(--amarelo); font-size: 15px; margin-bottom: 14px; }
-    .depo-text { font-size: 15px; color: rgba(248,250,251,0.78); line-height: 1.7; margin-bottom: 20px; font-style: italic; }
+    .depo-stars { color: var(--gold); font-size: 14px; margin-bottom: 14px; letter-spacing: 2px; }
+    .depo-text {
+      font-size: 14.5px; color: rgba(240,235,227,0.75);
+      line-height: 1.72; margin-bottom: 22px;
+      font-style: italic; position: relative; z-index: 1;
+    }
     .depo-author { display: flex; align-items: center; gap: 12px; }
     .depo-avatar {
-      width: 42px; height: 42px; border-radius: 50%;
-      background: linear-gradient(135deg, var(--verde-esc), var(--navy));
+      width: 40px; height: 40px;
+      background: var(--bg);
+      border: 1px solid var(--gold);
       display: flex; align-items: center; justify-content: center;
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 18px; color: var(--branco);
+      font-family: 'Archivo Black', sans-serif;
+      font-size: 14px; color: var(--gold);
       flex-shrink: 0;
     }
     .depo-name {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 15px; font-weight: 700;
-      color: var(--branco);
+      font-family: 'Archivo Black', sans-serif;
+      font-size: 14px; color: var(--text);
     }
-    .depo-role { font-size: 12px; color: var(--cinza); }
+    .depo-role { font-size: 12px; color: var(--muted); }
 
-    /* ── PREÇO ────────────────────────────────────────────── */
+    /* ── PREÇO ───────────────────────────────────────────── */
     .preco {
-      background: linear-gradient(160deg, #07080A 0%, #050D1A 60%, #07080A 100%);
+      background: var(--surface);
       position: relative;
       overflow: hidden;
-    }
-    .preco::before {
-      content: '';
-      position: absolute;
-      top: -100px; right: -100px;
-      width: 500px; height: 500px;
-      background: radial-gradient(circle, rgba(0,200,83,0.07) 0%, transparent 70%);
-      pointer-events: none;
     }
     .preco-box {
-      max-width: 640px; margin: 0 auto;
-      background: rgba(255,255,255,0.03);
-      border: 1px solid rgba(0,200,83,0.2);
-      border-radius: 12px;
+      max-width: 600px; margin: 0 auto;
+      background: var(--bg);
+      border: 1px solid rgba(240,180,41,0.2);
+      border-top: 3px solid var(--gold);
       padding: 52px 48px;
       position: relative;
-      overflow: hidden;
       text-align: center;
     }
-    .preco-box::before {
-      content: '';
-      position: absolute; top: 0; left: 0; right: 0;
-      height: 3px;
-      background: linear-gradient(90deg, var(--verde), var(--amarelo), var(--verde));
-    }
     .preco-label {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 13px; font-weight: 700; letter-spacing: 0.15em;
-      color: var(--verde); text-transform: uppercase;
-      margin-bottom: 8px;
+      font-size: 10px; font-weight: 700; letter-spacing: 0.22em;
+      color: var(--gold); text-transform: uppercase;
+      margin-bottom: 10px;
     }
     .preco-title {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 40px; color: var(--branco);
-      margin-bottom: 4px;
-    }
-    .preco-de {
-      font-size: 16px; color: var(--cinza);
-      text-decoration: line-through;
+      font-family: 'Archivo Black', sans-serif;
+      font-size: 32px; color: var(--text);
+      letter-spacing: -0.01em;
       margin-bottom: 6px;
     }
+    .preco-de {
+      font-size: 15px; color: var(--muted);
+      text-decoration: line-through;
+      margin-bottom: 8px;
+    }
     .preco-main {
-      display: flex; align-items: flex-start; justify-content: center; gap: 4px;
+      display: flex; align-items: flex-start; justify-content: center; gap: 2px;
       margin-bottom: 8px;
     }
     .preco-currency {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 28px; font-weight: 700;
-      color: var(--verde); margin-top: 12px;
+      font-family: 'Archivo Black', sans-serif;
+      font-size: 24px; color: var(--gold);
+      margin-top: 14px;
     }
     .preco-value {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 90px; line-height: 1;
-      color: var(--verde);
+      font-family: 'Archivo Black', sans-serif;
+      font-size: 96px; line-height: 1;
+      color: var(--gold); letter-spacing: -0.02em;
     }
     .preco-cents {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 28px; font-weight: 700;
-      color: var(--verde); margin-top: 12px;
+      font-family: 'Archivo Black', sans-serif;
+      font-size: 24px; color: var(--gold);
+      margin-top: 14px;
     }
     .preco-parcela {
-      font-size: 14px; color: var(--cinza); margin-bottom: 32px;
+      font-size: 13px; color: var(--muted);
+      margin-bottom: 36px;
     }
-    .preco-cta {
-      display: flex; flex-direction: column; align-items: center; gap: 12px;
-    }
+    .preco-cta { display: flex; flex-direction: column; align-items: stretch; gap: 12px; }
     .btn-buy {
-      display: inline-flex; align-items: center; justify-content: center; gap: 12px;
-      background: var(--verde);
+      display: flex; align-items: center; justify-content: center; gap: 10px;
+      background: var(--gold);
       color: #000; font-weight: 800;
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 22px; letter-spacing: 0.04em;
-      padding: 20px 52px; border-radius: var(--r);
-      text-decoration: none;
-      transition: transform .2s, filter .2s, box-shadow .2s;
-      box-shadow: 0 0 50px rgba(0,200,83,0.35);
-      width: 100%;
+      font-family: 'Archivo Black', sans-serif;
+      font-size: 17px; letter-spacing: 0.02em;
+      padding: 20px 40px;
+      text-decoration: none; width: 100%;
+      transition: filter .2s, transform .15s;
+      border: none; cursor: pointer;
     }
     .btn-buy:hover {
-      transform: translateY(-3px);
-      filter: brightness(1.08);
-      box-shadow: 0 12px 60px rgba(0,200,83,0.5);
+      filter: brightness(1.1);
+      transform: translateY(-1px);
     }
     .preco-seguro {
-      display: flex; align-items: center; gap: 8px;
-      font-size: 13px; color: var(--cinza);
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+      font-size: 12px; color: var(--muted);
     }
     .preco-metodos {
-      display: flex; gap: 10px; justify-content: center; margin-top: 16px;
+      display: flex; gap: 8px; justify-content: center; margin-top: 6px;
       flex-wrap: wrap;
     }
     .metodo {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 11px; font-weight: 700; letter-spacing: 0.08em;
-      color: var(--cinza);
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.08);
-      padding: 4px 12px; border-radius: 4px;
-    }
-
-    /* Countdown */
-    .countdown {
-      display: flex; gap: 12px; justify-content: center;
-      margin-bottom: 32px;
-    }
-    .countdown-unit {
-      display: flex; flex-direction: column; align-items: center;
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: var(--r);
-      padding: 12px 16px;
-      min-width: 72px;
-    }
-    .countdown-num {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 36px; line-height: 1;
-      color: var(--amarelo);
-    }
-    .countdown-label {
       font-size: 10px; font-weight: 700; letter-spacing: 0.1em;
-      color: var(--cinza); text-transform: uppercase;
+      color: var(--muted);
+      background: rgba(240,235,227,0.04);
+      border: 1px solid var(--linha);
+      padding: 4px 12px;
     }
 
-    /* ── GARANTIA ──────────────────────────────────────────── */
+    /* ── GARANTIA ────────────────────────────────────────── */
     .garantia {
-      background: #070B10;
+      background: var(--bg);
       border-top: 1px solid var(--linha);
     }
     .garantia-box {
@@ -855,166 +712,114 @@
       display: flex; gap: 40px; align-items: flex-start;
     }
     .garantia-icon {
-      font-size: 80px; flex-shrink: 0;
-      filter: drop-shadow(0 0 20px rgba(0,200,83,0.3));
+      font-size: 72px; flex-shrink: 0;
+      line-height: 1;
     }
     .garantia-title {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 38px; color: var(--verde);
-      margin-bottom: 12px;
+      font-family: 'Archivo Black', sans-serif;
+      font-size: 34px; color: var(--gold);
+      letter-spacing: -0.01em;
+      margin-bottom: 14px;
     }
     .garantia-text {
-      font-size: 16px; color: rgba(248,250,251,0.75);
+      font-size: 15.5px; color: rgba(240,235,227,0.72);
       line-height: 1.75;
     }
 
-    /* ── FAQ ─────────────────────────────────────────────── */
-    .faq { background: #0A0D12; }
-    .faq-list { max-width: 700px; display: flex; flex-direction: column; gap: 4px; }
-    .faq-item {
-      border: 1px solid rgba(255,255,255,0.06);
-      border-radius: var(--r);
-      overflow: hidden;
-    }
+    /* ── FAQ ────────────────────────────────────────────── */
+    .faq { background: var(--surface); }
+    .faq-list { max-width: 700px; display: flex; flex-direction: column; border-top: 1px solid var(--linha); }
+    .faq-item { border-bottom: 1px solid var(--linha); }
     .faq-q {
       display: flex; justify-content: space-between; align-items: center;
-      padding: 20px 24px;
+      padding: 20px 0;
       cursor: pointer;
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 17px; font-weight: 700;
-      color: var(--branco);
-      background: rgba(255,255,255,0.02);
-      transition: background .2s;
-      user-select: none;
-      gap: 16px;
+      font-family: 'Archivo Black', sans-serif;
+      font-size: 15.5px; letter-spacing: -0.01em;
+      color: var(--text);
+      transition: color .2s;
+      user-select: none; gap: 16px;
     }
-    .faq-q:hover { background: rgba(255,255,255,0.04); }
+    .faq-q:hover { color: var(--gold); }
     .faq-icon {
-      font-size: 20px; color: var(--verde); flex-shrink: 0;
+      font-size: 22px; color: var(--gold); flex-shrink: 0;
+      font-family: 'Archivo Black', sans-serif;
       transition: transform .3s;
+      line-height: 1;
     }
     .faq-a {
-      font-size: 15px; color: rgba(248,250,251,0.72);
-      line-height: 1.7;
+      font-size: 14.5px; color: rgba(240,235,227,0.65);
+      line-height: 1.72;
       max-height: 0; overflow: hidden;
-      transition: max-height .35s ease, padding .35s ease;
-      padding: 0 24px;
+      transition: max-height .38s ease, padding .38s ease;
+      padding: 0;
     }
-    .faq-item.open .faq-a { max-height: 300px; padding: 0 24px 20px; }
+    .faq-item.open .faq-a { max-height: 320px; padding: 0 0 20px; }
     .faq-item.open .faq-icon { transform: rotate(45deg); }
 
-    /* ── FOOTER CTA ────────────────────────────────────────── */
-    .footer-cta {
-      background: linear-gradient(160deg, #050D1A 0%, #07080A 100%);
-      text-align: center;
-      padding: 120px 0;
-      position: relative;
-      overflow: hidden;
-    }
-    .footer-cta::before {
-      content: '';
-      position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
-      width: 600px; height: 300px;
-      background: radial-gradient(ellipse, rgba(0,200,83,0.08) 0%, transparent 70%);
-    }
-    .footer-cta-headline {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(40px, 6vw, 76px);
-      line-height: 0.95;
-      margin-bottom: 20px;
-      position: relative;
-    }
-    .footer-cta-sub {
-      font-size: 18px; color: rgba(248,250,251,0.7);
-      margin-bottom: 44px; max-width: 520px;
-      margin-left: auto; margin-right: auto;
-    }
-    .footer-cta-group {
-      display: flex; flex-direction: column; align-items: center; gap: 14px;
-    }
-
-    /* ── FOOTER ───────────────────────────────────────────── */
+    /* ── FOOTER ─────────────────────────────────────────── */
     footer {
-      background: #050709;
+      background: #050507;
       border-top: 1px solid var(--linha);
       padding: 36px 0;
       text-align: center;
     }
     .footer-logo {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 20px; letter-spacing: 0.08em;
-      color: rgba(255,255,255,0.3);
+      font-family: 'Archivo Black', sans-serif;
+      font-size: 18px; letter-spacing: 0.04em;
+      color: rgba(240,235,227,0.25);
       margin-bottom: 8px;
     }
-    .footer-logo span { color: rgba(0,200,83,0.4); }
-    .footer-copy { font-size: 13px; color: rgba(255,255,255,0.2); }
+    .footer-logo span { color: rgba(240,180,41,0.4); }
+    .footer-copy { font-size: 12px; color: rgba(240,235,227,0.18); }
 
-    /* ── FLOATING CTA ─────────────────────────────────────── */
-    .floating-cta {
-      position: fixed; bottom: 24px; right: 24px; z-index: 200;
-      opacity: 0; pointer-events: none;
-      transform: translateY(20px);
-      transition: opacity .4s, transform .4s;
-    }
-    .floating-cta.visible { opacity: 1; pointer-events: all; transform: translateY(0); }
-    .floating-btn {
-      display: flex; align-items: center; gap: 10px;
-      background: var(--verde);
-      color: #000; font-weight: 800;
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 16px; letter-spacing: 0.04em;
-      padding: 14px 24px; border-radius: 100px;
-      text-decoration: none;
-      box-shadow: 0 4px 30px rgba(0,200,83,0.45);
-      transition: transform .2s, filter .2s;
-    }
-    .floating-btn:hover { transform: scale(1.03); filter: brightness(1.1); }
-
-    /* ── REVEAL ANIMATIONS ────────────────────────────────── */
+    /* ── REVEAL ─────────────────────────────────────────── */
     .reveal {
-      opacity: 0; transform: translateY(28px);
-      transition: opacity .6s ease, transform .6s ease;
+      opacity: 0; transform: translateY(24px);
+      transition: opacity .55s ease, transform .55s ease;
     }
     .reveal.visible { opacity: 1; transform: translateY(0); }
     .reveal-delay-1 { transition-delay: .1s; }
     .reveal-delay-2 { transition-delay: .2s; }
     .reveal-delay-3 { transition-delay: .3s; }
 
-    /* ── RESPONSIVE ──────────────────────────────────────────*/
+    /* ── RESPONSIVE ─────────────────────────────────────── */
     @media (max-width: 768px) {
-      .hero-content { grid-template-columns: 1fr; gap: 48px; }
-      .book-mockup { display: flex; justify-content: center; }
-      .hero-gloves-img { width: 240px; }
-      .book-3d { width: 180px; }
-      .hero-stats { gap: 20px; flex-wrap: wrap; }
-      .solucao-reveal { flex-direction: column; gap: 40px; }
+      .hero-content { grid-template-columns: 1fr; gap: 52px; }
+      .hero-photo-wrap { display: flex; justify-content: center; }
+      .hero-photo-frame { width: 260px; }
+      .hero-stats { grid-template-columns: 1fr; }
+      .stat-divider { display: none; }
+      .stat-item { padding: 8px 0; }
+      .agit-layout { grid-template-columns: 1fr; }
+      .agit-photo { width: 100%; }
+      .solucao-reveal { flex-direction: column; gap: 44px; }
       .garantia-box { flex-direction: column; gap: 20px; align-items: center; text-align: center; }
-      .preco-box { padding: 36px 24px; }
-      .preco-value { font-size: 72px; }
+      .preco-box { padding: 36px 20px; }
+      .preco-value { font-size: 76px; }
       section { padding: 72px 0; }
+      .pain-shock-overlay { padding: 0 24px; }
     }
   </style>
 </head>
 <body>
 
-<!-- ── NAV ───────────────────────────────────────────────── -->
+<!-- ── NAV ──────────────────────────────────────────────── -->
 <nav>
   <div class="nav-logo">A Ciência <span>da Defesa</span></div>
 </nav>
 
-<!-- ── HERO ──────────────────────────────────────────────── -->
+<!-- ── HERO ─────────────────────────────────────────────── -->
 <section class="hero">
   <div class="hero-bg"></div>
-  <div class="hero-diagonal"></div>
   <div class="container--wide">
     <div class="hero-content">
       <div>
-        <div class="hero-tag">Guia Técnico Definitivo</div>
         <p class="hero-eyebrow">Para o goleiro que já jogou fora R$300 em luvas que duraram um mês</p>
         <h1 class="hero-headline">
-          Por Que Seu<br>
-          <span class="line-verde">Látex Morre</span>
-          <span class="line-amarelo">Em 3 Semanas</span>
+          <span class="line-solid">Por Que Seu</span>
+          <span class="line-gold">Látex Morre</span>
+          <span class="line-outline">Em 3 Semanas</span>
         </h1>
         <p class="hero-sub">
           E como goleiros de elite fazem o <strong>mesmo material durar 6 meses</strong> —
@@ -1025,10 +830,12 @@
             <div class="stat-num">R$2.400</div>
             <div class="stat-label">O que você perde em 3 anos sem esse conhecimento</div>
           </div>
+          <div class="stat-divider"></div>
           <div class="stat-item">
             <div class="stat-num">6 meses</div>
             <div class="stat-label">Vida útil média com o sistema de rodízio</div>
           </div>
+          <div class="stat-divider"></div>
           <div class="stat-item">
             <div class="stat-num">8 cap.</div>
             <div class="stat-label">Do básico ao avançado — aplicável a partir do primeiro treino</div>
@@ -1036,15 +843,14 @@
         </div>
       </div>
 
-      <!-- Hero Gloves Image -->
-      <div class="book-mockup">
-        <div class="hero-gloves-wrap">
-          <div class="hero-gloves-img">
-            <img src="images/hq720.jpg" alt="Coleção de luvas de goleiro profissionais — Reusch, Uhlsport e mais">
-            <div class="hero-gloves-caption">Reusch · Uhlsport · Speed Pro · e mais</div>
-          </div>
-          <div class="book-glow"></div>
+      <!-- Hero Photo -->
+      <div class="hero-photo-wrap">
+        <div class="hero-photo-frame">
+          <img src="images/hq720.jpg" alt="Coleção de luvas de goleiro profissionais — Reusch, Uhlsport e mais">
+          <div class="hero-photo-corners"></div>
+          <div class="hero-photo-caption">Reusch · Uhlsport · Speed Pro · e mais</div>
         </div>
+        <div class="hero-photo-label">Guia Técnico Definitivo</div>
       </div>
     </div>
   </div>
@@ -1053,31 +859,30 @@
 <!-- ── STRIP ─────────────────────────────────────────────── -->
 <div class="strip">
   <div class="strip-inner">
-    <span class="strip-item">ANATOMIA DA LUVA</span><span class="strip-sep">·</span>
-    <span class="strip-item">CIÊNCIA DO LÁTEX</span><span class="strip-sep">·</span>
-    <span class="strip-item">CORTES E ENCAIXE</span><span class="strip-sep">·</span>
-    <span class="strip-item">FINGERSAVE</span><span class="strip-sep">·</span>
-    <span class="strip-item">GUIA DE LAVAGEM</span><span class="strip-sep">·</span>
-    <span class="strip-item">RODÍZIO INTELIGENTE</span><span class="strip-sep">·</span>
-    <span class="strip-item">CONSERVAÇÃO</span><span class="strip-sep">·</span>
-    <span class="strip-item">TAMANHO IDEAL</span><span class="strip-sep">·</span>
-    <!-- repete para loop -->
-    <span class="strip-item">ANATOMIA DA LUVA</span><span class="strip-sep">·</span>
-    <span class="strip-item">CIÊNCIA DO LÁTEX</span><span class="strip-sep">·</span>
-    <span class="strip-item">CORTES E ENCAIXE</span><span class="strip-sep">·</span>
-    <span class="strip-item">FINGERSAVE</span><span class="strip-sep">·</span>
-    <span class="strip-item">GUIA DE LAVAGEM</span><span class="strip-sep">·</span>
-    <span class="strip-item">RODÍZIO INTELIGENTE</span><span class="strip-sep">·</span>
-    <span class="strip-item">CONSERVAÇÃO</span><span class="strip-sep">·</span>
-    <span class="strip-item">TAMANHO IDEAL</span><span class="strip-sep">·</span>
+    <span class="strip-item">ANATOMIA DA LUVA</span><span class="strip-sep">◆</span>
+    <span class="strip-item">CIÊNCIA DO LÁTEX</span><span class="strip-sep">◆</span>
+    <span class="strip-item">CORTES E ENCAIXE</span><span class="strip-sep">◆</span>
+    <span class="strip-item">FINGERSAVE</span><span class="strip-sep">◆</span>
+    <span class="strip-item">GUIA DE LAVAGEM</span><span class="strip-sep">◆</span>
+    <span class="strip-item">RODÍZIO INTELIGENTE</span><span class="strip-sep">◆</span>
+    <span class="strip-item">CONSERVAÇÃO</span><span class="strip-sep">◆</span>
+    <span class="strip-item">TAMANHO IDEAL</span><span class="strip-sep">◆</span>
+    <span class="strip-item">ANATOMIA DA LUVA</span><span class="strip-sep">◆</span>
+    <span class="strip-item">CIÊNCIA DO LÁTEX</span><span class="strip-sep">◆</span>
+    <span class="strip-item">CORTES E ENCAIXE</span><span class="strip-sep">◆</span>
+    <span class="strip-item">FINGERSAVE</span><span class="strip-sep">◆</span>
+    <span class="strip-item">GUIA DE LAVAGEM</span><span class="strip-sep">◆</span>
+    <span class="strip-item">RODÍZIO INTELIGENTE</span><span class="strip-sep">◆</span>
+    <span class="strip-item">CONSERVAÇÃO</span><span class="strip-sep">◆</span>
+    <span class="strip-item">TAMANHO IDEAL</span><span class="strip-sep">◆</span>
   </div>
 </div>
 
-<!-- ── DOR ───────────────────────────────────────────────── -->
+<!-- ── DOR ──────────────────────────────────────────────── -->
 <section class="dor">
   <div class="container">
     <div class="section-tag reveal">O problema</div>
-    <h2 class="section-headline reveal">Você Reconhece <span class="verde">Alguma Dessas</span> Situações?</h2>
+    <h2 class="section-headline reveal">Você Reconhece Alguma Dessas Situações?</h2>
     <blockquote class="dor-intro reveal">
       Você está parado no gol. O atacante domina na área. Você se posiciona. Ele chuta — potente, no canto.
       Você mergulha... e a bola escapa pelos seus dedos. Não foi falta de técnica.
@@ -1097,32 +902,32 @@
 
     <div class="pain-grid">
       <div class="pain-card reveal">
-        <div class="pain-icon">💸</div>
+        <div class="pain-num">01</div>
         <div class="pain-title">Dinheiro no Lixo</div>
         <div class="pain-text">Você gastou R$150, R$200, R$300 em uma luva "top" que esfarelaou em três semanas. Sem saber o porquê, você culpou a marca.</div>
       </div>
       <div class="pain-card reveal reveal-delay-1">
-        <div class="pain-icon">😤</div>
+        <div class="pain-num">02</div>
         <div class="pain-title">O "Achismo" da Loja</div>
         <div class="pain-text">O vendedor te indicou pela estética, pelo preço ou pelo que tinha mais em estoque. Ninguém te explicou latex, corte ou curado de calor.</div>
       </div>
       <div class="pain-card reveal reveal-delay-2">
-        <div class="pain-icon">🎯</div>
+        <div class="pain-num">03</div>
         <div class="pain-title">Tamanho Errado</div>
         <div class="pain-text">A luva fica solta, "dança" durante a defesa, ou aperta demais e corta a circulação. Você nunca soube como medir corretamente.</div>
       </div>
       <div class="pain-card reveal">
-        <div class="pain-icon">🌧️</div>
+        <div class="pain-num">04</div>
         <div class="pain-title">Chuva = Desastre</div>
         <div class="pain-text">Na chuva a bola vira sabonete nas suas mãos. Você não sabia que existe látex específico para clima úmido — e que há como ativar o grip.</div>
       </div>
       <div class="pain-card reveal reveal-delay-1">
-        <div class="pain-icon">🧹</div>
+        <div class="pain-num">05</div>
         <div class="pain-title">Lavagem Errada</div>
         <div class="pain-text">Você torcia, usava detergente de louça ou deixava secar no sol. Sem saber, você era o responsável pela morte precoce do seu próprio material.</div>
       </div>
       <div class="pain-card reveal reveal-delay-2">
-        <div class="pain-icon">🏟️</div>
+        <div class="pain-num">06</div>
         <div class="pain-title">Campo Errado, Luva Errada</div>
         <div class="pain-text">Levou a luva de Contact Grip pro sintético abrasivo. Ela durou dois treinos. Ninguém te avisou que cada terreno exige um tipo de látex.</div>
       </div>
@@ -1130,47 +935,47 @@
   </div>
 </section>
 
-<!-- ── AGITAÇÃO ───────────────────────────────────────────── -->
+<!-- ── AGITAÇÃO ──────────────────────────────────────────── -->
 <section class="agit">
   <div class="container">
-    <div class="section-tag reveal" style="color:#FF5252;">O custo real</div>
+    <div class="section-tag reveal" style="color:var(--red);">O custo real</div>
     <h2 class="agit-headline reveal">Quanto Isso Está<br>Te Custando?</h2>
     <div class="agit-layout">
-    <div>
-    <div class="agit-calc reveal">
-      <div class="calc-row">
-        <span class="calc-label">Luva nova todo mês (por cuidado errado)</span>
-        <span class="calc-value">R$ 150–300</span>
+      <div>
+        <div class="agit-calc reveal">
+          <div class="calc-row">
+            <span class="calc-label">Luva nova todo mês (por cuidado errado)</span>
+            <span class="calc-value">R$ 150–300</span>
+          </div>
+          <div class="calc-row">
+            <span class="calc-label">Luva errada para o terreno</span>
+            <span class="calc-value">R$ 200+</span>
+          </div>
+          <div class="calc-row">
+            <span class="calc-label">Tamanho/corte errado = rendimento abaixo</span>
+            <span class="calc-value">Incalculável</span>
+          </div>
+          <div class="calc-row">
+            <span class="calc-label">Custo anual médio de equipamento sem conhecimento</span>
+            <span class="calc-value">R$ 800+</span>
+          </div>
+          <div class="calc-total">
+            <span class="calc-total-label">Prejuízo acumulado em 3 anos</span>
+            <span class="calc-total-value">R$ 2.400+</span>
+          </div>
+        </div>
+        <p class="agit-close reveal">
+          <em>E não é só dinheiro. É a confiança abalada. É o momento em que você hesita na defesa
+          porque não confia no material que está nas suas mãos. Isso tem nome: é a ausência de conhecimento técnico.</em>
+        </p>
       </div>
-      <div class="calc-row">
-        <span class="calc-label">Luva errada para o terreno</span>
-        <span class="calc-value">R$ 200+</span>
-      </div>
-      <div class="calc-row">
-        <span class="calc-label">Tamanho/corte errado = rendimento abaixo</span>
-        <span class="calc-value">Incalculável</span>
-      </div>
-      <div class="calc-row">
-        <span class="calc-label">Custo anual médio de equipamento sem conhecimento</span>
-        <span class="calc-value">R$ 800+</span>
-      </div>
-      <div class="calc-total">
-        <span class="calc-total-label">Prejuízo acumulado em 3 anos</span>
-        <span class="calc-total-value">R$ 2.400+</span>
-      </div>
-    </div>
-    <p class="agit-close reveal">
-      <em>E não é só dinheiro. É a confiança abalada. É o momento em que você hesita na defesa
-      porque não confia no material que está nas suas mãos. Isso tem nome: é a ausência de conhecimento técnico.</em>
-    </p>
-    </div><!-- end agit left col -->
 
-    <!-- Destroyed glove photo -->
-    <div class="agit-photo reveal">
-      <img src="images/maxresdefault.jpg" alt="Látex de luva de goleiro completamente desgastado — resultado de cuidado errado">
-      <div class="agit-photo-label">Látex destruído</div>
+      <!-- Destroyed glove photo -->
+      <div class="agit-photo reveal">
+        <img src="images/maxresdefault.jpg" alt="Látex de luva de goleiro completamente desgastado — resultado de cuidado errado">
+        <div class="agit-photo-label">Látex destruído</div>
+      </div>
     </div>
-    </div><!-- end agit-layout -->
   </div>
 </section>
 
@@ -1199,26 +1004,14 @@
           nunca mais pague para aprender na marra.
         </p>
       </div>
-      <!-- Mini book -->
+      <!-- Mini book card -->
       <div class="solucao-book reveal" style="text-align:center;">
-        <div style="position:relative; display:inline-block;">
-          <div class="book-3d" style="width:190px; animation-duration:5s;">
-            <div class="book-cover" style="background: linear-gradient(145deg, #071529 0%, #030a14 100%);">
-              <div class="book-spine">
-                <span class="book-spine-text">A CIÊNCIA DA DEFESA</span>
-              </div>
-              <div class="book-tag">8 Capítulos</div>
-              <div style="margin-top: auto;">
-                <div class="book-title-cover" style="font-size:24px;">A CIÊNCIA<span>DA DEFESA</span></div>
-                <div class="book-sub-cover">Guia Definitivo das Luvas de Goleiro</div>
-              </div>
-              <div class="book-num">8</div>
-            </div>
-          </div>
-          <div class="book-glow"></div>
-        </div>
-        <div style="margin-top:20px; font-family:'Barlow Condensed',sans-serif; font-size:13px; color:var(--cinza); letter-spacing:0.05em;">
-          ACESSO IMEDIATO · PDF COMPLETO
+        <div class="book-card">
+          <span class="book-card-tag">8 Capítulos</span>
+          <div class="book-card-title">A CIÊNCIA<span>DA DEFESA</span></div>
+          <div class="book-card-sub">Guia Definitivo das Luvas de Goleiro</div>
+          <div class="book-card-footer">Acesso Imediato · PDF Completo</div>
+          <div class="book-card-bg-num">8</div>
         </div>
       </div>
     </div>
@@ -1229,13 +1022,13 @@
 <section class="caps">
   <div class="container--wide">
     <div class="section-tag reveal" style="text-align:center;">O que você vai aprender</div>
-    <h2 class="section-headline reveal" style="text-align:center;">8 Capítulos. <span class="verde">Conhecimento Completo.</span></h2>
+    <h2 class="section-headline reveal" style="text-align:center;">8 Capítulos. <span class="gold">Conhecimento Completo.</span></h2>
     <p class="section-sub reveal" style="margin:0 auto 56px; text-align:center;">
       Do básico que ninguém ensinou ao avançado que só os profissionais sabem. Cada capítulo foi construído para ser aplicado imediatamente.
     </p>
     <div class="caps-grid">
       <div class="cap-card reveal">
-        <div class="cap-num">01</div>
+        <div class="cap-num-bg">01</div>
         <div class="cap-badge">Cap. 01</div>
         <div class="cap-title">Anatomia de uma Luva</div>
         <div class="cap-text">Pare de comprar pela foto. Entenda o que cada parte faz e nunca mais seja enganado por embalagem bonita.</div>
@@ -1246,7 +1039,7 @@
         </ul>
       </div>
       <div class="cap-card reveal reveal-delay-1">
-        <div class="cap-num">02</div>
+        <div class="cap-num-bg">02</div>
         <div class="cap-badge">Cap. 02</div>
         <div class="cap-title">O Coração da Luva: O Látex</div>
         <div class="cap-text">A razão pela qual sua luva cara escorrega na chuva — e como escolher o látex certo para cada situação.</div>
@@ -1257,7 +1050,7 @@
         </ul>
       </div>
       <div class="cap-card reveal reveal-delay-2">
-        <div class="cap-num">03</div>
+        <div class="cap-num-bg">03</div>
         <div class="cap-badge">Cap. 03</div>
         <div class="cap-title">Os Cortes — A Engenharia do Encaixe</div>
         <div class="cap-text">Por que sua luva cara parece desconfortável — e como um único ajuste resolve isso para sempre.</div>
@@ -1268,7 +1061,7 @@
         </ul>
       </div>
       <div class="cap-card reveal">
-        <div class="cap-num">04</div>
+        <div class="cap-num-bg">04</div>
         <div class="cap-badge">Cap. 04</div>
         <div class="cap-title">Proteções e Tecnologias</div>
         <div class="cap-text">O que realmente protege seu dedo — e o que é só nome bonito para cobrar mais caro.</div>
@@ -1279,7 +1072,7 @@
         </ul>
       </div>
       <div class="cap-card reveal reveal-delay-1">
-        <div class="cap-num">05</div>
+        <div class="cap-num-bg">05</div>
         <div class="cap-badge">Cap. 05</div>
         <div class="cap-title">O Tamanho Ideal</div>
         <div class="cap-text">Você mede a mão hoje e sabe o número exato antes de dormir — nunca mais errar comprando online.</div>
@@ -1290,7 +1083,7 @@
         </ul>
       </div>
       <div class="cap-card reveal reveal-delay-2">
-        <div class="cap-num">06</div>
+        <div class="cap-num-bg">06</div>
         <div class="cap-badge">Cap. 06</div>
         <div class="cap-title">Guia Mestre da Lavagem</div>
         <div class="cap-text">O protocolo de 4 passos que você executa depois do próximo treino — e dobra a vida útil da sua luva atual.</div>
@@ -1301,7 +1094,7 @@
         </ul>
       </div>
       <div class="cap-card reveal">
-        <div class="cap-num">07</div>
+        <div class="cap-num-bg">07</div>
         <div class="cap-badge">Cap. 07</div>
         <div class="cap-title">Conservação e Armazenamento</div>
         <div class="cap-text">Lavar certo e guardar errado é jogar trabalho fora. Aprenda a segunda metade que ninguém ensina.</div>
@@ -1312,7 +1105,7 @@
         </ul>
       </div>
       <div class="cap-card reveal reveal-delay-1">
-        <div class="cap-num">08</div>
+        <div class="cap-num-bg">08</div>
         <div class="cap-badge">Cap. 08</div>
         <div class="cap-title">Estratégia de Uso — O Rodízio</div>
         <div class="cap-text">O sistema que faz uma luva de R$250 durar 6 meses — e garante que você nunca entre em campo com material desgastado.</div>
@@ -1326,15 +1119,15 @@
   </div>
 </section>
 
-<!-- ── VALUE STACK ────────────────────────────────────────── -->
+<!-- ── VALUE STACK ──────────────────────────────────────── -->
 <section class="stack">
   <div class="container">
     <div class="section-tag reveal">O que você recebe</div>
-    <h2 class="section-headline reveal">Tudo Que Está <span class="verde">Incluído</span></h2>
+    <h2 class="section-headline reveal">Tudo Que Está <span class="gold">Incluído</span></h2>
     <p class="section-sub reveal">Valor real do que você leva hoje.</p>
     <div class="stack-items">
       <div class="stack-item reveal">
-        <div class="stack-item-icon">📘</div>
+        <div class="stack-item-icon">01</div>
         <div class="stack-item-text">
           <div class="stack-item-name">E-book "A Ciência da Defesa" — Guia Completo</div>
           <div class="stack-item-desc">8 capítulos técnicos sobre anatomia, látex, cortes, proteções, tamanho, lavagem, conservação e estratégia</div>
@@ -1342,7 +1135,7 @@
         <div class="stack-item-price">R$97</div>
       </div>
       <div class="stack-item reveal reveal-delay-1">
-        <div class="stack-item-icon">📖</div>
+        <div class="stack-item-icon">02</div>
         <div class="stack-item-text">
           <div class="stack-item-name">Cheat Sheet de Compra: 15 Termos Que o Vendedor Usa Para Te Confundir</div>
           <div class="stack-item-desc">Contact Grip, Giga Grip, Rollfinger, Negative Cut — em 30 segundos você entende cada um e nunca mais compra a luva errada por falta de vocabulário</div>
@@ -1350,7 +1143,7 @@
         <div class="stack-item-price">R$27</div>
       </div>
       <div class="stack-item reveal reveal-delay-2">
-        <div class="stack-item-icon">📊</div>
+        <div class="stack-item-icon">03</div>
         <div class="stack-item-text">
           <div class="stack-item-name">Tabela de Tamanhos com Método de Medição</div>
           <div class="stack-item-desc">Como medir sua mão em casa e nunca mais errar o tamanho — mesmo comprando online</div>
@@ -1358,7 +1151,7 @@
         <div class="stack-item-price">R$17</div>
       </div>
       <div class="stack-item reveal">
-        <div class="stack-item-icon">🔄</div>
+        <div class="stack-item-icon">04</div>
         <div class="stack-item-text">
           <div class="stack-item-name">Sistema de Rodízio Inteligente de Luvas</div>
           <div class="stack-item-desc">O ciclo completo de vida da luva — da compra ao descarte sem jamais desperdiçar material</div>
@@ -1366,7 +1159,7 @@
         <div class="stack-item-price">R$27</div>
       </div>
       <div class="stack-item reveal reveal-delay-1">
-        <div class="stack-item-icon">🧴</div>
+        <div class="stack-item-icon">05</div>
         <div class="stack-item-text">
           <div class="stack-item-name">Guia Visual de Lavagem — Passo a Passo</div>
           <div class="stack-item-desc">Protocolo exato de limpeza que faz o látex durar até 3x mais — incluindo o que jamais usar</div>
@@ -1381,14 +1174,15 @@
   </div>
 </section>
 
-<!-- ── DEPOIMENTOS ────────────────────────────────────────── -->
+<!-- ── DEPOIMENTOS ───────────────────────────────────────── -->
 <section class="depo">
   <div class="container">
     <div class="section-tag reveal" style="text-align:center;">Quem já aplicou</div>
-    <h2 class="section-headline reveal" style="text-align:center;">O Que Outros <span class="verde">Goleiros Dizem</span></h2>
+    <h2 class="section-headline reveal" style="text-align:center;">O Que Outros <span class="gold">Goleiros Dizem</span></h2>
     <p class="section-sub reveal" style="text-align:center; margin: 0 auto 56px;">Resultados reais de quem parou de desperdiçar dinheiro em equipamento.</p>
     <div class="depo-grid">
       <div class="depo-card reveal">
+        <div class="depo-quote-bg">"</div>
         <div class="depo-stars">★★★★★</div>
         <p class="depo-text">"Eu gastava R$250 por mês em luvas novas. Depois de aprender o sistema de rodízio e a lavagem correta, minha luva atual já tem 4 meses de uso intenso com o látex ainda vivo."</p>
         <div class="depo-author">
@@ -1400,6 +1194,7 @@
         </div>
       </div>
       <div class="depo-card reveal reveal-delay-1">
+        <div class="depo-quote-bg">"</div>
         <div class="depo-stars">★★★★★</div>
         <p class="depo-text">"Nunca entendi por que minhas luvas sempre ficavam coladas quando guardava. Aprendi sobre o celofane entre as palmas e acabou o problema. Simples e eficaz."</p>
         <div class="depo-author">
@@ -1411,6 +1206,7 @@
         </div>
       </div>
       <div class="depo-card reveal reveal-delay-2">
+        <div class="depo-quote-bg">"</div>
         <div class="depo-stars">★★★★★</div>
         <p class="depo-text">"O capítulo de cortes me fez entender por que sempre me sentia desconfortável com minhas luvas. Era o corte errado pra minha mão. Trocou e melhorou 100%."</p>
         <div class="depo-author">
@@ -1429,10 +1225,10 @@
 <section class="preco" id="comprar">
   <div class="container" style="text-align:center;">
     <div class="section-tag reveal" style="text-align:center;">Oferta de lançamento</div>
-    <h2 class="section-headline reveal" style="text-align:center; margin-bottom:8px;">
-      Invista Uma Vez.<br><span class="verde">Economize Para Sempre.</span>
+    <h2 class="section-headline reveal" style="text-align:center; margin-bottom:10px;">
+      Invista Uma Vez.<br><span class="gold">Economize Para Sempre.</span>
     </h2>
-    <p style="color:var(--cinza); margin-bottom:48px; font-size:16px;" class="reveal">
+    <p style="color:var(--muted); margin-bottom:52px; font-size:15px;" class="reveal">
       Cada semana sem esse conhecimento é mais uma luva potencialmente destruída. O custo de esperar é maior que R$47.
     </p>
 
@@ -1461,7 +1257,7 @@
   </div>
 </section>
 
-<!-- ── GARANTIA ───────────────────────────────────────────── -->
+<!-- ── GARANTIA ──────────────────────────────────────────── -->
 <section class="garantia">
   <div class="container">
     <div class="garantia-box">
@@ -1480,11 +1276,11 @@
   </div>
 </section>
 
-<!-- ── FAQ ────────────────────────────────────────────────── -->
+<!-- ── FAQ ───────────────────────────────────────────────── -->
 <section class="faq">
   <div class="container">
     <div class="section-tag reveal">Dúvidas frequentes</div>
-    <h2 class="section-headline reveal" style="margin-bottom:40px;">Perguntas <span class="verde">Respondidas</span></h2>
+    <h2 class="section-headline reveal" style="margin-bottom:40px;">Perguntas <span class="gold">Respondidas</span></h2>
     <div class="faq-list">
       <div class="faq-item reveal">
         <div class="faq-q" onclick="toggleFaq(this)">
@@ -1537,8 +1333,10 @@
   // ── Reveal on Scroll ─────────────────────────────────────
   const reveals = document.querySelectorAll('.reveal');
   const io = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }});
-  }, { threshold: 0.12 });
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.1 });
   reveals.forEach(el => io.observe(el));
 
   // ── FAQ Toggle ───────────────────────────────────────────
